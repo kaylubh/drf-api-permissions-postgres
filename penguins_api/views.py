@@ -1,4 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Penguin
 from .serializers import PenguinSerializer
@@ -12,4 +13,4 @@ class PenguinList(ListCreateAPIView):
 class PenguinDetail(RetrieveUpdateDestroyAPIView):
     queryset = Penguin.objects.all()
     serializer_class = PenguinSerializer
-    permission_classes = IsUserOrReadOnly,
+    permission_classes = IsUserOrReadOnly, IsAuthenticated
