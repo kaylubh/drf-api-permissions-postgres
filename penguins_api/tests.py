@@ -22,6 +22,9 @@ class PenguinTests(APITestCase):
         )
         test_penguin.save()
 
+    def setUp(self):
+        self.client.login(username="testuser1", password="pass")
+
     def test_penguins_model(self):
         penguin = Penguin.objects.get(id=1)
         actual_user = str(penguin.user)
